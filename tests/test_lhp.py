@@ -6,7 +6,7 @@ import aiohttp
 import pytest
 from yarl import URL
 
-from lhp import LHP_client
+from lhp import LHPClient
 from lhp.exceptions import LHPConnectionError, LHPError
 
 
@@ -24,8 +24,10 @@ async def test_json_request(aresponses):
         ),
     )
     async with aiohttp.ClientSession() as session:
-        lhp_client = LHP_client(session=session)
-        response = await lhp_client._request(URL("http://example.com/api/"), {'pgnr': 'test'})
+        lhp_client = LHPClient(session=session)
+        response = await lhp_client._request(
+            URL("http://example.com/api/"), {"pgnr": "test"}
+        )
         assert response["status"] == "ok"
 
 
@@ -42,8 +44,10 @@ async def test_internal_session(aresponses):
             text='{"status": "ok"}',
         ),
     )
-    async with LHP_client() as lhp_client:
-        response = await lhp_client._request(URL("http://example.com/api/"), {'pgnr': 'test'})
+    async with LHPClient() as lhp_client:
+        response = await lhp_client._request(
+            URL("http://example.com/api/"), {"pgnr": "test"}
+        )
         assert response["status"] == "ok"
 
 
@@ -58,12 +62,14 @@ async def test_timeout(aresponses):
     aresponses.add("example.com", "/api/", "POST", response_handler)
 
     async with aiohttp.ClientSession() as session:
-        lhp_client = LHP_client(
+        lhp_client = LHPClient(
             session=session,
             request_timeout=1,
         )
         with pytest.raises(LHPConnectionError):
-            assert await lhp_client._request(URL("http://example.com/api/"), {'pgnr': 'test'})
+            assert await lhp_client._request(
+                URL("http://example.com/api/"), {"pgnr": "test"}
+            )
 
 
 @pytest.mark.asyncio
@@ -77,9 +83,11 @@ async def test_http_error400(aresponses):
     )
 
     async with aiohttp.ClientSession() as session:
-        lhp_client = LHP_client(session=session)
+        lhp_client = LHPClient(session=session)
         with pytest.raises(LHPError):
-            assert await lhp_client._request(URL("http://example.com/api/"), {'pgnr': 'test'})
+            assert await lhp_client._request(
+                URL("http://example.com/api/"), {"pgnr": "test"}
+            )
 
 
 @pytest.mark.asyncio
@@ -97,6 +105,8 @@ async def test_http_error500(aresponses):
     )
 
     async with aiohttp.ClientSession() as session:
-        lhp_client = LHP_client(session=session)
+        lhp_client = LHPClient(session=session)
         with pytest.raises(LHPError):
-            assert await lhp_client._request(URL("http://example.com/api/"), {'pgnr': 'test'})
+            assert await lhp_client._request(
+                URL("http://example.com/api/"), {"pgnr": "test"}
+            )

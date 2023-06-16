@@ -1,15 +1,11 @@
 """Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API."""
 from .exceptions import LHPConnectionError, LHPError
-from .models import (
-    CurrentWaterLevel,
-    PrecipitationUnit,
-)
-from .lhp import LHP_client
+from .lhp import LHPClient
+from .models import CurrentWaterLevel
 
 __all__ = [
     "CurrentWaterLevel",
-    "LHP_client",
+    "LHPClient",
     "LHPConnectionError",
     "LHPError",
-    "PrecipitationUnit",
 ]

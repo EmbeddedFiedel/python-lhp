@@ -72,11 +72,11 @@ repos:
         types: [yaml]
         entry: poetry run check-yaml
       - id: codespell
-        name: ✅ Check code for common misspellings
+        name: ✅ Check code for common misspellings asdf
         language: system
         types: [text]
         exclude: ^poetry\.lock$
-        entry: poetry run codespell
+        entry: poetry run codespell --ignore-words codespell-ignore-words.txt
       - id: debug-statements
         name: 🪵  Debug Statements and imports (Python)
         language: system

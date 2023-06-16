@@ -30,13 +30,13 @@ pip install lhp
 ```python
 import asyncio
 
-from lhp import LHP_client
+from lhp import LHPClient
 
 
 async def main():
     """Show example on using the LHP API client."""
-    async with LHP_client() as lhp_client:
-        currentWaterLevel = await lhp_client.currentWaterLevel(
+    async with LHPClient() as lhp_client:
+        currentWaterLevel = await lhp_client.currentwaterlevel(
             pgnr="SH_111015",
         )
         print(currentWaterLevel)
