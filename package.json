@@ -1,0 +1,16 @@
+{
+  "name": "lhp",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API",
+  "scripts": {
+    "pyright": "pyright",
+    "prettier": "prettier --write **/*.{json,js,md,yml,yaml}"
+  },
+  "author": "Karsten Bade <karsten@bade.dev>",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^2.2.1",
+    "pyright": "^1.1.108"
+  }
+}
