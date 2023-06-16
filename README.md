@@ -149,7 +149,7 @@ SOFTWARE.
 [poetry]: https://python-poetry.org
 [pre-commit]: https://pre-commit.com/
 [project-stage-shield]: https://img.shields.io/badge/Project%20Stage-Concept-red.svg
-[pypi]: https://pypi.org/project/open-meteo/
+[pypi]: https://pypi.org/project/lhp/
 [python-versions-shield]: https://img.shields.io/pypi/pyversions/lhp
 [releases-shield]: https://img.shields.io/github/release/embeddedfiedel/python-lhp.svg
 [releases]: https://github.com/embeddedfiedel/python-lhp/releases

@@ -1,4 +1,4 @@
-"""Asynchronous client for the Open-Meteo API."""
+# Python: Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API.
 from __future__ import annotations
 
 from pydantic import BaseModel, Field
