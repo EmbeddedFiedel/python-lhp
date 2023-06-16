@@ -1,7 +1,6 @@
-# Python: Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API.
+"""Asynchronous client for the Länderübergreifendes Hochwasserportal API."""
 from __future__ import annotations
 
-import json
 import asyncio
 import socket
 from dataclasses import dataclass
@@ -12,14 +11,11 @@ from aiohttp.client import ClientError, ClientResponseError, ClientSession
 from yarl import URL
 
 from .exceptions import LHPConnectionError, LHPError
-from .models import (
-    CurrentWaterLevel,
-    PrecipitationUnit,
-)
+from .models import CurrentWaterLevel
 
 
 @dataclass
-class LHP_client:
+class LHPClient:
     """Main class for the LHP API."""
 
     # Request timeout in seconds.
@@ -89,14 +85,10 @@ class LHP_client:
             )
         return await response.json(content_type=None)
 
-    async def currentWaterLevel(
+    async def currentwaterlevel(
         self,
         *,
         pgnr: str,
-        #water_level: float = 0,
-        #flood: int = 0,
-        #flood_text: str = "",
-        
     ) -> CurrentWaterLevel:
         """Get current water level.
 
@@ -106,12 +98,15 @@ class LHP_client:
         Returns:
             A CurrentWaterLevel object.
         """
-        url = URL("https://hochwasserzentralen.api.proxy.bund.dev/webservices/get_infospegel.php")
-        data = {'pgnr': pgnr}
+        url = URL(
+            "https://hochwasserzentralen.api.proxy.bund.dev/"
+            "webservices/get_infospegel.php"
+        )
+        data = {"pgnr": pgnr}
         result = await self._request(url=url, data=data)
 
-        # Seperate value from unit.
-        result['W_float']=float(result['W'].split()[0])
+        # Separate value from unit.
+        result["W_float"] = float(result["W"].split()[0])
 
         return CurrentWaterLevel.parse_obj(result)
 
@@ -120,7 +115,7 @@ class LHP_client:
         if self.session and self._close_session:
             await self.session.close()
 
-    async def __aenter__(self) -> LHP_client:
+    async def __aenter__(self) -> LHPClient:
         """Async enter.
 
         Returns:

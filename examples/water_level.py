@@ -1,15 +1,16 @@
 """Asynchronous client for the LHP API."""
 import asyncio
 
-from lhp import LHP_client
+from lhp import LHPClient
+
 
 async def main():
     """Show example on using the LHP API client."""
-    async with LHP_client() as lhp_client:
-        currentWaterLevel = await lhp_client.currentWaterLevel(
+    async with LHPClient() as lhp_client:
+        current_water_level = await lhp_client.currentwaterlevel(
             pgnr="SH_111015",
         )
-        print(currentWaterLevel)
+        print(current_water_level)
 
 
 if __name__ == "__main__":

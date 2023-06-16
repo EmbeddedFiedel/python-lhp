@@ -1,4 +1,4 @@
-# Python: Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API.
+"""Asynchronous client for the Länderübergreifendes Hochwasserportal API."""
 from __future__ import annotations
 
 from enum import Enum, auto
