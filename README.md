@@ -36,10 +36,10 @@ from lhp import LHP_client
 async def main():
     """Show example on using the LHP API client."""
     async with LHP_client() as lhp_client:
-        waterlevel = await lhp_client.waterlevel(
-            pgnr=SH_111015,
+        currentWaterLevel = await lhp_client.currentWaterLevel(
+            pgnr="SH_111015",
         )
-        print(waterlevel)
+        print(currentWaterLevel)
 
 
 if __name__ == "__main__":
