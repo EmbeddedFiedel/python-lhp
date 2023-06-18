@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "lhp"
-version = "0.0.1"
+version = "0.0.0"
 description = "Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API."
 authors = ["Karsten Bade <karsten@bade.dev>"]
 maintainers = ["Karsten Bade <karsten@bade.dev>"]

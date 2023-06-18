@@ -1,6 +1,6 @@
 {
   "name": "lhp",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": true,
   "description": "Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API",
   "scripts": {
