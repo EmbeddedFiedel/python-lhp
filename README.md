@@ -7,10 +7,6 @@
 [![License][license-shield]](LICENSE.md)
 
 [![Build Status][build-shield]][build]
-[![Code Coverage][codecov-shield]][codecov]
-[![Code Quality][code-quality-shield]][code-quality]
-
-[![Sponsor EmbeddedFiedel via GitHub Sponsors][github-sponsors-shield]][github-sponsors]
 
 Asynchronous client for the Länderübergreifendes Hochwasserportal (LHP) API.
 
