@@ -109,7 +109,7 @@ class LHPClient:
         if not 'W' in result:
             raise LHPError(
                 "Unexpected response from the LHP API",
-                {"Content-Type": content_type, "response": text},
+                {"Result": result},
             )
         result["W_float"] = float(result["W"].split()[0])
 
