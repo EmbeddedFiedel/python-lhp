@@ -106,6 +106,11 @@ class LHPClient:
         result = await self._request(url=url, data=data)
 
         # Separate value from unit.
+        if  now "W" in result:
+            raise LHPError(
+                "Unexpected response from the LHP API",
+                {"Content-Type": content_type, "response": text},
+            )
         result["W_float"] = float(result["W"].split()[0])
 
         return CurrentWaterLevel.parse_obj(result)
