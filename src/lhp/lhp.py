@@ -110,6 +110,10 @@ class LHPClient:
         result = await self._request(url=url, data=data)
 
         # Separate value from unit.
+        if result is None:
+            raise LHPError(
+                "Unexpected empty response from the LHP API",
+            )
         if "W" not in result:
             raise LHPError(
                 "Unexpected response from the LHP API",
