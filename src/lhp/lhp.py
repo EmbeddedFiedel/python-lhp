@@ -97,6 +97,10 @@ class LHPClient:
 
         Returns:
             A CurrentWaterLevel object.
+
+        Raises:
+            LHPError: Received an unexpected response from the LHP
+                API.
         """
         url = URL(
             "https://hochwasserzentralen.api.proxy.bund.dev/"
@@ -106,6 +110,11 @@ class LHPClient:
         result = await self._request(url=url, data=data)
 
         # Separate value from unit.
+        if "W" not in result:
+            raise LHPError(
+                "Unexpected response from the LHP API",
+                {"Result": result},
+            )
         result["W_float"] = float(result["W"].split()[0])
 
         return CurrentWaterLevel.parse_obj(result)
